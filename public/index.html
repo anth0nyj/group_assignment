@@ -8,6 +8,12 @@
     <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body ng-controller="MainController as ctrl">
-    {{ctrl.test}}
+
+    <!-- Post Display -->
+    <div ng-repeat="post in ctrl.posts">
+      {{post.username}} <br/>
+      {{post.postBody}}
+    </div>
+
   </body>
 </html>
