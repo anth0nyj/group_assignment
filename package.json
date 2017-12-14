@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/anth0nyj/group_assignment#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mongoose": "^4.13.7",
+    "morgan": "^1.9.0",
+    "pretty-error": "^2.1.1"
   }
 }
