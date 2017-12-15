@@ -1,0 +1,22 @@
+<div ng-repeat="post in ctrl.posts | filter: searchBox">
+  {{post.username}} <br/>
+  {{post.postBody}} <br/>
+
+  <!-- Toggle Edit Form -->
+  <form ng-hide="ctrl.showForm === post._id" ng-submit="ctrl.showEdit(post)">
+    <input type="submit" value="Edit">
+  </form>
+
+  <!-- Edit Form -->
+  <form ng-if="ctrl.showForm === post._id" ng-submit="ctrl.editPost(post)">
+    <input placeholder={{post.username}} ng-model="ctrl.editData.username"/>
+    <input placeholder={{post.postBody}} ng-model="ctrl.editData.postBody"/>
+    <input type="submit" value="Submit"/>
+  </form>
+
+  <!-- Delete Button -->
+  <form ng-submit="ctrl.deletePost(post)">
+    <input type="submit" value="Delete">
+  </form>
+  <br/>
+</div>

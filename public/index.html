@@ -13,35 +13,10 @@
     <input type="text" placeholder="Search..." ng-model="searchBox">
 
     <!-- New Post Form -->
-    <form ng-submit="ctrl.createPost()">
-      <input type="text" ng-model="ctrl.postData.username" placeholder="Username"/>
-      <input type="text" ng-model="ctrl.postData.postBody" placeholder="Post"/>
-      <input type="submit" value="Submit"/>
-    </form>
+    <div ng-include="'partials/new_post.html'"></div>
 
     <!-- Individual Posts with Buttons and Forms -->
-    <div ng-repeat="post in ctrl.posts | filter: searchBox">
-      {{post.username}} <br/>
-      {{post.postBody}} <br/>
-
-      <!-- Toggle Edit Form -->
-      <form ng-hide="ctrl.showForm === post._id" ng-submit="ctrl.showEdit(post)">
-        <input type="submit" value="Edit">
-      </form>
-
-      <!-- Edit Form -->
-      <form ng-if="ctrl.showForm === post._id" ng-submit="ctrl.editPost(post)">
-        <input placeholder={{post.username}} ng-model="ctrl.editData.username"/>
-        <input placeholder={{post.postBody}} ng-model="ctrl.editData.postBody"/>
-        <input type="submit" value="Submit"/>
-      </form>
-
-      <!-- Delete Button -->
-      <form ng-submit="ctrl.deletePost(post)">
-        <input type="submit" value="Delete">
-      </form>
-      <br/>
-    </div>
+    <div ng-include="'partials/all_posts.html'"></div>
 
   </body>
 </html>
