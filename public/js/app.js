@@ -3,7 +3,9 @@ const app = angular.module("PostApp", []);
 app.controller("MainController", ["$http", function($http) {
   this.posts = [];
   this.post = {};
+  this.showForm = false;
 
+  // Get All Posts
   this.loadPosts = () => {
     $http({
       method: "get",
@@ -50,20 +52,24 @@ app.controller("MainController", ["$http", function($http) {
     })
   }
 
-  this.showEdit = ( post) => {
-    this.editData={};
-    this.showForm=post._id;
+  // Show Edit Form
+  this.showEdit = (post) => {
+    this.editData = {};
+    this.showForm = post._id;
   }
 
   // Edit Post
-  this.editPost = ( post ) => {
+  this.editPost = (post) => {
+    console.log("Editing: ", post._id);
     $http({
-      method: "PUT",
+      method: "put",
       url: "/posts/" + post._id,
       data: this.editData
-    }).then(data => {
+    }).then(response => {
+      console.log(this.editData);
       this.loadPosts();
-    console.log(data);
+      this.showForm = {};
+      console.log("Response: ", response);
     }, error => {
       console.error(error);
     }).catch(err => {
