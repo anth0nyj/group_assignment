@@ -9,6 +9,10 @@
   </head>
   <body ng-controller="MainController as ctrl">
 
+    <!-- Search Box -->
+    <input type="text" placeholder="Search..." ng-model="searchBox">
+
+    <!-- New Post Form -->
     <form ng-submit="ctrl.createPost()">
       <input type="text" ng-model="ctrl.postData.username" placeholder="Username"/>
       <input type="text" ng-model="ctrl.postData.postBody" placeholder="Post"/>
@@ -16,7 +20,7 @@
     </form>
 
     <!-- Post Display -->
-    <div ng-repeat="post in ctrl.posts">
+    <div ng-repeat="post in ctrl.posts | filter: searchBox">
       {{post.username}} <br/>
       {{post.postBody}}
     </div>
