@@ -8,6 +8,15 @@
     <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body ng-controller="MainController as ctrl">
-    {{ctrl.test}}
+
+    <!-- Search Box -->
+    <input type="text" placeholder="Search..." ng-model="searchBox">
+
+    <!-- New Post Form -->
+    <div ng-include="'partials/new_post.html'"></div>
+
+    <!-- Individual Posts with Buttons and Forms -->
+    <div ng-include="'partials/all_posts.html'"></div>
+
   </body>
 </html>
