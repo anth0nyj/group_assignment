@@ -27,6 +27,23 @@
         <input type="submit" value="Delete">
       </form>
       <br/>
+
+      <form ng-submit='ctrl.showEdit( post )'>
+        <input type="submit" value="Edit"/>
+      </form>
+
+      <form ng-if="ctrl.showForm === post._id" ng-submit="ctrl.editPost( post )" >
+        <input type="text" ng-model="ctrl.editData.username" placeholder="Username"/>
+        <input type="text" ng-model="ctrl.editData.postBody" placeholder="Post"/>
+        <input type="submit" value="Submit">
+      </form>
+      <br/>
+      <br/>
+    </div>
+
+    <!-- EDIT -->
+    <div>
+
     </div>
 
   </body>
