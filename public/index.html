@@ -9,6 +9,12 @@
   </head>
   <body ng-controller="MainController as ctrl">
 
+    <form ng-submit="ctrl.createPost()">
+      <input type="text" ng-model="ctrl.postData.username" placeholder="Username"/>
+      <input type="text" ng-model="ctrl.postData.postBody" placeholder="Post"/>
+      <input type="submit" value="Submit"/>
+    </form>
+
     <!-- Post Display -->
     <div ng-repeat="post in ctrl.posts">
       {{post.username}} <br/>
