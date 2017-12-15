@@ -13,21 +13,10 @@
     <input type="text" placeholder="Search..." ng-model="searchBox">
 
     <!-- New Post Form -->
-    <form ng-submit="ctrl.createPost()">
-      <input type="text" ng-model="ctrl.postData.username" placeholder="Username"/>
-      <input type="text" ng-model="ctrl.postData.postBody" placeholder="Post"/>
-      <input type="submit" value="Submit"/>
-    </form>
+    <div ng-include="'partials/new_post.html'"></div>
 
-    <!-- Post Display -->
-    <div ng-repeat="post in ctrl.posts | filter: searchBox">
-      {{post.username}} <br/>
-      {{post.postBody}} <br/>
-      <form ng-submit="ctrl.deletePost(post)">
-        <input type="submit" value="Delete">
-      </form>
-      <br/>
-    </div>
+    <!-- Individual Posts with Buttons and Forms -->
+    <div ng-include="'partials/all_posts.html'"></div>
 
   </body>
 </html>
