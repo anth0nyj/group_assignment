@@ -22,7 +22,11 @@
     <!-- Post Display -->
     <div ng-repeat="post in ctrl.posts | filter: searchBox">
       {{post.username}} <br/>
-      {{post.postBody}}
+      {{post.postBody}} <br/>
+      <form ng-submit="ctrl.deletePost(post)">
+        <input type="submit" value="Delete">
+      </form>
+      <br/>
     </div>
 
   </body>

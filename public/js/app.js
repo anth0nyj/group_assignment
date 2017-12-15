@@ -2,6 +2,7 @@ const app = angular.module("PostApp", []);
 
 app.controller("MainController", ["$http", function($http) {
   this.posts = [];
+  this.post = {};
 
   // Get All Posts
   $http({
@@ -10,11 +11,12 @@ app.controller("MainController", ["$http", function($http) {
   }).then(response => {
     this.posts = response.data;
   }, error => {
-    console.log(error);
+    console.error(error);
   }).catch(err => {
-    console.log("Catch: ", err);
+    console.error("Catch: ", err);
   });
 
+  // Create New Post
   this.createPost = () => {
     $http({
       method: "post",
@@ -25,7 +27,23 @@ app.controller("MainController", ["$http", function($http) {
     }, error => {
       console.error(error);
     }).catch(err => {
-      console.log("Catch: ", err);
+      console.error("Catch: ", err);
+    })
+  }
+
+  // Delete Post
+  this.deletePost = (postToDelete) => {
+    console.log("Deleting: ", postToDelete._id);
+    $http({
+      method: "delete",
+      url: "/posts/" + postToDelete._id
+    }).then(response => {
+      const postIndex = this.posts.findIndex(post => post._id === postToDelete._id);
+      this.posts.splice(postIndex, 1);
+    }, error => {
+      console.error(error);
+    }).catch(err => {
+      console.error("Catch: ", err);
     })
   }
 
